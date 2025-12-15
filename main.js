@@ -27,10 +27,14 @@ const libraryGrid = document.querySelector("#library");
 function displayBooksInLibrary() {
   library.forEach((book) => {
     const bookCard = document.createElement("div");
-    bookCard.classList.add("book");
+    bookCard.classList.add("bookCard");
 
-    bookCard.textContent = book.title;
+    const bookContent = document.createElement("div");
+    bookContent.classList.add("bookContent");
 
+    bookContent.textContent = book.title;
+
+    bookCard.appendChild(bookContent);
     libraryGrid.appendChild(bookCard);
   });
 }
@@ -38,8 +42,10 @@ function displayBooksInLibrary() {
 const hungerGames = new Book("Hunger Games", "Suzanne Collins");
 const hatchet = new Book("Hatchet", "Gary Paulsen");
 const gooseGirl = new Book("Goose Girl", "Shannon Hale");
+const afterDark = new Book("After Dark", "Murakami");
+const mazeRunner = new Book("Maze Runner", "Author");
 
-addBookToLibrary(hungerGames, hatchet, gooseGirl);
+addBookToLibrary(hungerGames, hatchet, gooseGirl, afterDark, mazeRunner);
 
 // on page load, determine lenght of libary array and create that many
 // cards.
