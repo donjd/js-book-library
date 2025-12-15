@@ -1,3 +1,7 @@
+window.addEventListener("load", () => {
+  displayBooksInLibrary();
+});
+
 const library = [];
 
 function Book(title, author) {
@@ -18,9 +22,25 @@ function addBookToLibrary(...books) {
   library.push(...books);
 }
 
+const libraryGrid = document.querySelector("#library");
+
+function displayBooksInLibrary() {
+  library.forEach((book) => {
+    const bookCard = document.createElement("div");
+    bookCard.classList.add("book");
+
+    bookCard.textContent = book.title;
+
+    libraryGrid.appendChild(bookCard);
+  });
+}
+
 const hungerGames = new Book("Hunger Games", "Suzanne Collins");
 const hatchet = new Book("Hatchet", "Gary Paulsen");
+const gooseGirl = new Book("Goose Girl", "Shannon Hale");
 
-addBookToLibrary(hungerGames, hatchet);
+addBookToLibrary(hungerGames, hatchet, gooseGirl);
 
-console.log(library);
+// on page load, determine lenght of libary array and create that many
+// cards.
+//

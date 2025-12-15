@@ -1,0 +1,11 @@
+body {
+  min-height: 100vh;
+  height: 100vh;
+}
+
+main {
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 100px;
+}
