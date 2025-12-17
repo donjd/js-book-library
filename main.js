@@ -25,6 +25,9 @@ function addBookToLibrary(...books) {
 const libraryGrid = document.querySelector("#library");
 
 function displayBooksInLibrary() {
+  if (!libraryGrid) return;
+  libraryGrid.innerHTML = "";
+
   library.forEach((book) => {
     const bookCard = document.createElement("div");
     bookCard.classList.add("bookCard");
@@ -50,3 +53,27 @@ addBookToLibrary(hungerGames, hatchet, gooseGirl, afterDark, mazeRunner);
 // on page load, determine lenght of libary array and create that many
 // cards.
 //
+
+const addBookBtn = document.querySelector(".add-book-btn");
+const form = document.querySelector("form");
+
+addBookBtn.addEventListener("click", () => {
+  form.classList.toggle("open");
+});
+
+const addBookToLibraryBtn = document.querySelector(".add-book-to-library-btn");
+const bookTitle = document.querySelector(".book-title");
+const bookAuthor = document.querySelector(".book-author");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const newBookTitle = bookTitle.value;
+  const newBookAuthor = bookAuthor.value;
+
+  const newBook = new Book(newBookTitle, newBookAuthor);
+
+  addBookToLibrary(newBook);
+  displayBooksInLibrary();
+  form.reset();
+});
