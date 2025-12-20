@@ -46,12 +46,18 @@ main {
   border: 1px solid rgb(255, 255, 255);
   display: grid;
   place-items: center;
+
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
 }
 
 .bookContent {
   width: auto;
   text-align: center;
   margin: 5px;
+
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
 }
 
 form {
@@ -73,6 +79,25 @@ form.open {
 
 button {
   align-self: start;
+}
+
+.remove-book-x-btn {
+  margin: 5px 7px;
+
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  align-self: start;
+  justify-self: end;
+  display: none;
+
+  z-index: 1;
+}
+
+.x-btn-visible {
+  display: block;
+  background: none;
+  border: none;
+  color: white;
 }
 
 @media (width < 500px) {

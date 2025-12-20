@@ -1,7 +1,3 @@
-// window.addEventListener("load", () => {
-//   displayBooksInLibrary();
-// });
-
 const library = [];
 
 function Book(title, author) {
@@ -13,10 +9,6 @@ function Book(title, author) {
 Book.prototype.displayBookInfo = function () {
   return `Title: ${this.title}, Author: ${this.author}, Book ID: ${this.id}`;
 };
-
-function addBookToLibrary(...books) {
-  library.push(...books);
-}
 
 const libraryGrid = document.querySelector("#library");
 const addBookBtn = document.querySelector(".add-book-btn");
@@ -32,6 +24,10 @@ addBookBtn.addEventListener("click", () => {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  if (!bookTitle.value || !bookAuthor.value) {
+    return;
+  }
+
   const newBookTitle = bookTitle.value;
   const newBookAuthor = bookAuthor.value;
 
@@ -41,17 +37,26 @@ form.addEventListener("submit", (e) => {
 
   const bookCard = document.createElement("div");
   const bookContent = document.createElement("div");
+  const removeBookXBtn = document.createElement("button");
 
   bookCard.classList.add("bookCard");
   bookContent.classList.add("bookContent");
+  removeBookXBtn.classList.add("remove-book-x-btn");
 
   bookContent.textContent = newBook.title;
+  removeBookXBtn.textContent = "X";
 
   bookCard.appendChild(bookContent);
+  bookCard.appendChild(removeBookXBtn);
   libraryGrid.appendChild(bookCard);
 
-  // addBookToLibrary(newBook);
-  // displayBooksInLibrary();
+  bookCard.addEventListener("mouseover", () => {
+    removeBookXBtn.classList.add("x-btn-visible");
+  });
+
+  bookCard.addEventListener("mouseout", () => {
+    removeBookXBtn.classList.remove("x-btn-visible");
+  });
+
   form.reset();
-  console.log(library);
 });
