@@ -11,6 +11,11 @@ html {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+body {
+  background-color: hsl(0, 0%, 0%);
+  color: white;
+}
+
 body > * {
   margin: 1rem;
 }
@@ -34,10 +39,11 @@ main {
   grid-template-columns: repeat(auto-fit, 80px);
   grid-auto-rows: 110px;
   gap: 30px;
+  min-height: 110px;
 }
 
 .bookCard {
-  border: 1px solid black;
+  border: 1px solid rgb(255, 255, 255);
   display: grid;
   place-items: center;
 }
@@ -67,4 +73,14 @@ form.open {
 
 button {
   align-self: start;
+}
+
+@media (width < 500px) {
+  main {
+    justify-content: center;
+  }
+
+  H1 {
+    text-align: center;
+  }
 }
