@@ -43,6 +43,9 @@ form.addEventListener("submit", (e) => {
   bookContent.classList.add("bookContent");
   removeBookXBtn.classList.add("remove-book-x-btn");
 
+  bookCard.dataset.bookId = newBook.id;
+  removeBookXBtn.dataset.bookId = newBook.id;
+
   bookContent.textContent = newBook.title;
   removeBookXBtn.textContent = "X";
 
@@ -59,4 +62,12 @@ form.addEventListener("submit", (e) => {
   });
 
   form.reset();
+  bookTitle.focus();
+});
+
+libraryGrid.addEventListener("click", (e) => {
+  if (e.target.classList.contains("remove-book-x-btn")) {
+    const matchingBook = e.target.closest(".bookCard");
+    matchingBook.remove();
+  }
 });
