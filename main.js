@@ -30,6 +30,7 @@ const bookAuthor = document.querySelector(".book-author");
 //shows and hides the add book section
 addBookBtn.addEventListener("click", () => {
   form.classList.toggle("open");
+  bookTitle.focus();
 });
 
 form.addEventListener("submit", (e) => {
