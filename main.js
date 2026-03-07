@@ -25,10 +25,12 @@ function Book(title, author, isbn, haveRead) {
 }
 
 function renderPage() {
+  libraryGrid.textContent = "";
+
   library.forEach((book) => {
-    const bookCard = Document.createElement("article");
+    const bookCard = document.createElement("article");
     bookCard.classList.add("bookCard");
-    bookCard.textContent = "hello";
+    bookCard.textContent = book;
 
     libraryGrid.appendChild(bookCard);
   });
