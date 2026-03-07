@@ -5,12 +5,13 @@ const bookTitle = document.querySelector(".book-title");
 const bookAuthor = document.querySelector(".book-author");
 const isbn = document.querySelector(".isbn");
 const haveYouRead = document.querySelector(".have-read");
-const library = [];
 
 addBookBtn.addEventListener("click", () => {
   form.classList.toggle("open");
   bookTitle.focus();
 });
+
+const library = [];
 
 function Book(title, author, isbn, haveRead) {
   if (!new.target) {
@@ -23,6 +24,22 @@ function Book(title, author, isbn, haveRead) {
   this.id = crypto.randomUUID();
 }
 
-function addToLibrary(book) {
-  library.push(book);
+function renderPage() {
+  library.forEach((book) => {
+    const bookCard = Document.createElement("article");
+    bookCard.classList.add("bookCard");
+    bookCard.textContent = "hello";
+
+    libraryGrid.appendChild(bookCard);
+  });
 }
+
+const harryPotter = new Book("Harry Potter", "JK", 1234, true);
+const dune = new Book("Dune", "Frank", 1234, true);
+const theHobbit = new Book("The Hobbit", "JRR", 1234, true);
+
+library.push(harryPotter);
+library.push(dune);
+library.push(theHobbit);
+
+console.log(library);
