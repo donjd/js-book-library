@@ -30,8 +30,20 @@ function renderPage() {
   library.forEach((book) => {
     const bookCard = document.createElement("article");
     bookCard.classList.add("bookCard");
-    bookCard.textContent = book;
 
+    const bookCardX = document.createElement("div");
+    bookCardX.classList.add("remove-book-x-btn");
+    bookCardX.textContent = "X";
+
+    const bookCardTitle = document.createElement("p");
+    bookCardTitle.textContent = book.title;
+
+    const bookCardAuthor = document.createElement("p");
+    bookCardAuthor.textContent = book.author;
+
+    bookCard.appendChild(bookCardX);
+    bookCard.appendChild(bookCardTitle);
+    bookCard.appendChild(bookCardAuthor);
     libraryGrid.appendChild(bookCard);
   });
 }
@@ -40,8 +52,11 @@ const harryPotter = new Book("Harry Potter", "JK", 1234, true);
 const dune = new Book("Dune", "Frank", 1234, true);
 const theHobbit = new Book("The Hobbit", "JRR", 1234, true);
 
-library.push(harryPotter);
-library.push(dune);
-library.push(theHobbit);
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-console.log(library);
+  const newBook = new Book(bookTitle.value);
+
+  library.push(newBook);
+  renderPage();
+});
