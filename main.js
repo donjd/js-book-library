@@ -48,10 +48,6 @@ function renderPage() {
   });
 }
 
-const harryPotter = new Book("Harry Potter", "JK", 1234, true);
-const dune = new Book("Dune", "Frank", 1234, true);
-const theHobbit = new Book("The Hobbit", "JRR", 1234, true);
-
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -59,4 +55,6 @@ form.addEventListener("submit", (e) => {
 
   library.push(newBook);
   renderPage();
+  form.reset();
+  bookTitle.focus();
 });
