@@ -1,11 +1,14 @@
 const library = [];
 
 //Establish book constructor and methods
-function Book(title, author, haveRead, isbn) {
+function Book(title, author, isbn, haveRead) {
+  if (!new.target) {
+    throw Error("You must use the 'new' operator to call the constructor");
+  }
   this.title = title;
   this.author = author;
-  this.haveRead = haveRead;
   this.isbn = isbn;
+  this.haveRead = haveRead;
   this.id = crypto.randomUUID();
 }
 
@@ -13,6 +16,7 @@ function addToLibrary(book) {
   library.push(book);
 }
 
+//This works, but I still don't 100% understand it
 function removeBookById(id) {
   const indexOfBook = library.findIndex((book) => book.id === id);
   if (indexOfBook !== -1) {
@@ -26,6 +30,8 @@ const addBookBtn = document.querySelector(".add-book-btn");
 const form = document.querySelector("form");
 const bookTitle = document.querySelector(".book-title");
 const bookAuthor = document.querySelector(".book-author");
+const isbn = document.querySelector(".isbn");
+const haveYouRead = document.querySelector(".have-read");
 
 //shows and hides the add book section
 addBookBtn.addEventListener("click", () => {
@@ -37,11 +43,11 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   //exits the form unless these are both filled out
-  if (!bookTitle.value || !bookAuthor.value) {
+  if (!bookTitle.value) {
     return;
   }
 
-  const newBook = new Book(bookTitle.value, bookAuthor.value);
+  const newBook = new Book(bookTitle.value, bookAuthor.value, isbn.value, haveYouRead.value);
 
   //creates book elements
   const bookCard = document.createElement("div");

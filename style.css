@@ -12,8 +12,8 @@ html {
 }
 
 body {
-  background-color: hsl(0, 0%, 0%);
-  color: white;
+  /* background-color: hsl(0, 0%, 0%);
+  color: white; */
 }
 
 body > * {
@@ -40,11 +40,12 @@ main {
   grid-auto-rows: 110px;
   gap: 30px;
   min-height: 110px;
-  /* border: 1px solid red; */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.385);
+  padding-bottom: 10px;
 }
 
 .bookCard {
-  border: 1px solid rgb(255, 255, 255);
+  border: 2px solid rgb(0, 0, 0);
   border-radius: 3px;
   display: grid;
   place-items: center;
@@ -66,17 +67,14 @@ form {
   display: flex;
   flex-direction: column;
 
-  /* margin-top: 5rem; */
   width: 400px;
   display: none;
   opacity: 0;
-  transition: opacity 0.3s ease, display 0.3s ease allow-discrete;
 }
 
 form.open {
   opacity: 1;
   display: flex;
-  transition: opacity 0.3s ease, display 0.3s ease allow-discrete;
 }
 
 button {
@@ -93,7 +91,7 @@ button {
   justify-self: end;
   background: none;
   border: none;
-  color: white;
+  color: rgb(0, 0, 0);
   z-index: 1;
 }
 
