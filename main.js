@@ -27,13 +27,16 @@ function Book(title, author, isbn, haveRead) {
 function renderPage() {
   libraryGrid.textContent = "";
 
-  library.forEach((book) => {
+  library.forEach((book, index) => {
     const bookCard = document.createElement("article");
     bookCard.classList.add("bookCard");
 
-    const bookCardX = document.createElement("div");
+    const bookCardX = document.createElement("button");
     bookCardX.classList.add("remove-book-x-btn");
     bookCardX.textContent = "X";
+    bookCardX.addEventListener("click", () => {
+      deleteBook(index);
+    });
 
     const bookCardTitle = document.createElement("p");
     bookCardTitle.textContent = book.title;
@@ -51,10 +54,20 @@ function renderPage() {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const newBook = new Book(bookTitle.value);
+  if (!bookTitle.value || !bookAuthor.value) {
+    return;
+  }
+
+  const newBook = new Book(bookTitle.value, bookAuthor.value, isbn.value);
 
   library.push(newBook);
   renderPage();
   form.reset();
   bookTitle.focus();
 });
+
+function deleteBook(index) {
+  library.splice(index, 1);
+  console.log(library);
+  renderPage();
+}

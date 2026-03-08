@@ -46,7 +46,8 @@ main {
   place-items: center;
 
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: 1fr 25px;
+  position: relative;
 }
 
 .bookContent {
@@ -78,24 +79,32 @@ button {
 
 .remove-book-x-btn {
   display: none;
-
-  padding: 5px;
+  position: absolute;
+  /* top: 3px;
+  right: 3px; */
   grid-row: 1 / 2;
   grid-column: 1 / 2;
   align-self: start;
   justify-self: end;
-  background: none;
   border: none;
-  color: rgb(0, 0, 0);
   z-index: 1;
+  padding: 3px 5px;
+}
+
+.bookCard:hover {
+  .remove-book-x-btn {
+    display: block;
+    cursor: pointer;
+  }
+}
+
+.remove-book-x-btn:hover {
+  background-color: hsl(0, 100%, 50%);
+  color: white;
 }
 
 .remove-book-x-btn:active {
-  background-color: hsl(0, 0%, 26%);
-}
-
-.x-btn-visible {
-  display: block;
+  background-color: hsl(0, 100%, 37%);
 }
 
 @media (width < 500px) {
