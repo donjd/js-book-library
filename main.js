@@ -11,6 +11,21 @@ addBookBtn.addEventListener("click", () => {
   bookTitle.focus();
 });
 
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  if (!bookTitle.value || !bookAuthor.value) {
+    return;
+  }
+
+  const newBook = new Book(bookTitle.value, bookAuthor.value, isbn.value);
+
+  library.push(newBook);
+  renderPage();
+  form.reset();
+  bookTitle.focus();
+});
+
 const library = [];
 
 function Book(title, author, isbn, haveRead) {
@@ -34,9 +49,7 @@ function renderPage() {
     const bookCardX = document.createElement("button");
     bookCardX.classList.add("remove-book-x-btn");
     bookCardX.textContent = "X";
-    bookCardX.addEventListener("click", () => {
-      deleteBook(index);
-    });
+    bookCardX.dataset.id = book.id;
 
     const bookCardTitle = document.createElement("p");
     bookCardTitle.textContent = book.title;
@@ -51,23 +64,62 @@ function renderPage() {
   });
 }
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  if (!bookTitle.value || !bookAuthor.value) {
-    return;
+libraryGrid.addEventListener("click", (e) => {
+  if (e.target.className === "remove-book-x-btn") {
+    deleteBook(e);
   }
 
-  const newBook = new Book(bookTitle.value, bookAuthor.value, isbn.value);
+  if (e.target.className === "sort-abc-ascending") {
+    sortTitleABCAscending(e);
+  }
 
-  library.push(newBook);
-  renderPage();
-  form.reset();
-  bookTitle.focus();
+  if (e.target.cassName === "sort-abc-decending") {
+    sortTitleABCDecending(e);
+  }
 });
 
-function deleteBook(index) {
+function deleteBook(e) {
+  const id = e.target.dataset.id;
+  const index = library.findIndex((book) => {
+    return book.id == id;
+  });
+
   library.splice(index, 1);
   console.log(library);
+  renderPage();
+}
+
+function sortTitleABCAscending() {
+  library.sort((a, b) => {
+    const titleA = a.title.toUpperCase();
+    const titleB = b.title.toUpperCase();
+
+    if (titleA < titleB) {
+      return -1;
+    }
+
+    if (titleA > titleB) {
+      return 1;
+    }
+
+    return 0;
+  });
+  renderPage();
+}
+function sortTitleABCDecending() {
+  library.sort((a, b) => {
+    const titleA = a.title.toUpperCase();
+    const titleB = b.title.toUpperCase();
+
+    if (titleA < titleB) {
+      return 1;
+    }
+
+    if (titleA > titleB) {
+      return -1;
+    }
+
+    return 0;
+  });
   renderPage();
 }
