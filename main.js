@@ -4,7 +4,6 @@ const form = document.querySelector("form");
 const bookTitle = document.querySelector(".book-title");
 const bookAuthor = document.querySelector(".book-author");
 const isbn = document.querySelector(".isbn");
-const haveYouRead = document.querySelector(".have-read");
 
 addBookBtn.addEventListener("click", () => {
   form.classList.toggle("open");
@@ -18,7 +17,9 @@ form.addEventListener("submit", (e) => {
     return;
   }
 
-  const newBook = new Book(bookTitle.value, bookAuthor.value, isbn.value);
+  const haveReadSelection = document.querySelector('input[name="have-read"]:checked');
+
+  const newBook = new Book(bookTitle.value, bookAuthor.value, isbn.value, haveReadSelection.value);
 
   library.push(newBook);
   renderPage();
@@ -42,7 +43,7 @@ function Book(title, author, isbn, haveRead) {
 function renderPage() {
   libraryGrid.textContent = "";
 
-  library.forEach((book, index) => {
+  library.forEach((book) => {
     const bookCard = document.createElement("article");
     bookCard.classList.add("bookCard");
 
