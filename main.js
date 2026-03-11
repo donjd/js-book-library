@@ -68,15 +68,15 @@ function renderPage() {
   });
 }
 
-header.addEventListener("click", (e) => {
-  if (e.target.id === "sort-AZ") {
-    sortTitleABCAscending();
-  }
+// header.addEventListener("click", (e) => {
+//   if (e.target.id === "sort-AZ") {
+//     sortTitleABCAscending();
+//   }
 
-  if (e.target.id === "sort-ZA") {
-    sortTitleABCDecending();
-  }
-});
+//   if (e.target.id === "sort-ZA") {
+//     sortTitleABCDecending();
+//   }
+// });
 
 libraryGrid.addEventListener("click", (e) => {
   if (e.target.className === "remove-book-x-btn") {

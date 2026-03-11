@@ -9,13 +9,18 @@
   </head>
   <body>
     <h1>Donjd's Libary</h1>
-    <header>
-      <button id="sort-AZ" class="sort-btn">Sort A-Z</button>
-      <button id="sort-ZA" class="sort-btn">Sort Z-A</button>
-    </header>
     <main id="library"></main>
     <section class="form-container">
-      <button class="add-book-btn">Add book</button>
+      <div>
+        <button class="add-book-btn">Add book</button>
+        <select name="" id="">
+          <option value="placeholder" default disabled>Sort By</option>
+          <option value="ascending" default>Ascending</option>
+          <option value="decending" default>Decending</option>
+        </select>
+        <button id="sort-AZ" class="sort-btn">Sort A-Z</button>
+        <button id="sort-ZA" class="sort-btn">Sort Z-A</button>
+      </div>
       <form>
         <label for="new-book-title">Title:</label>
         <input type="text" name="book-title" class="book-title" id="title" />
