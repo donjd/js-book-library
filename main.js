@@ -4,6 +4,9 @@ const form = document.querySelector("form");
 const bookTitle = document.querySelector(".book-title");
 const bookAuthor = document.querySelector(".book-author");
 const isbn = document.querySelector(".isbn");
+const header = document.querySelector("header");
+const sortAZ = document.querySelector("#sort-AZ");
+const sortZA = document.querySelector("#sort-ZA");
 
 addBookBtn.addEventListener("click", () => {
   form.classList.toggle("open");
@@ -19,7 +22,7 @@ form.addEventListener("submit", (e) => {
 
   const haveReadSelection = document.querySelector('input[name="have-read"]:checked');
 
-  const newBook = new Book(bookTitle.value, bookAuthor.value, isbn.value, haveReadSelection.value);
+  const newBook = new Book(bookTitle.value, bookAuthor.value, isbn.value, haveReadSelection?.value);
 
   library.push(newBook);
   renderPage();
@@ -64,6 +67,16 @@ function renderPage() {
     libraryGrid.appendChild(bookCard);
   });
 }
+
+header.addEventListener("click", (e) => {
+  if (e.target.id === "sort-AZ") {
+    sortTitleABCAscending();
+  }
+
+  if (e.target.id === "sort-ZA") {
+    sortTitleABCDecending();
+  }
+});
 
 libraryGrid.addEventListener("click", (e) => {
   if (e.target.className === "remove-book-x-btn") {
