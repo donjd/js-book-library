@@ -35,8 +35,10 @@ main {
   grid-auto-rows: 110px;
   gap: 30px;
   min-height: 110px;
+  border-top: 1px solid rgba(0, 0, 0, 0.385);
   border-bottom: 1px solid rgba(0, 0, 0, 0.385);
-  padding-bottom: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .bookCard {
@@ -64,8 +66,8 @@ form {
   flex-direction: column;
 
   width: 400px;
-  display: none;
-  opacity: 0;
+  /* display: none; */
+  /* opacity: 0; */
 }
 
 form.open {
@@ -115,4 +117,18 @@ button {
   H1 {
     text-align: center;
   }
+}
+
+dialog {
+  margin: auto;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 10px;
 }

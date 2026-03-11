@@ -7,10 +7,23 @@ const isbn = document.querySelector(".isbn");
 const header = document.querySelector("header");
 const sortAZ = document.querySelector("#sort-AZ");
 const sortZA = document.querySelector("#sort-ZA");
+const modal = document.querySelector("dialog");
+const modalCloseBtn = document.querySelector("#modal-close-btn");
 
 addBookBtn.addEventListener("click", () => {
-  form.classList.toggle("open");
-  bookTitle.focus();
+  modal.showModal();
+});
+
+modalCloseBtn.addEventListener("click", () => {
+  modal.close();
+});
+
+//the following code is from Web Dev Simplified
+modal.addEventListener("click", (e) => {
+  const dialogDimensions = modal.getBoundingClientRect();
+  if (e.clientX < dialogDimensions.left || e.clientX > dialogDimensions.right || e.clientY < dialogDimensions.top || e.clientY > dialogDimensions.bottom) {
+    modal.close();
+  }
 });
 
 form.addEventListener("submit", (e) => {
