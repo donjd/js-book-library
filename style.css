@@ -28,8 +28,7 @@ h1 {
 }
 
 main {
-  margin-top: 3rem;
-
+  margin-top: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, 80px);
   grid-auto-rows: 110px;
@@ -50,6 +49,8 @@ main {
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 25px;
   position: relative;
+  text-align: center;
+  padding: 10px;
 }
 
 .bookContent {
@@ -131,4 +132,10 @@ dialog {
   justify-content: space-between;
 
   margin-top: 10px;
+}
+
+.library-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
 }

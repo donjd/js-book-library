@@ -4,9 +4,7 @@ const form = document.querySelector("form");
 const bookTitle = document.querySelector(".book-title");
 const bookAuthor = document.querySelector(".book-author");
 const isbn = document.querySelector(".isbn");
-const header = document.querySelector("header");
-const sortAZ = document.querySelector("#sort-AZ");
-const sortZA = document.querySelector("#sort-ZA");
+const sortMenu = document.querySelector("select");
 const modal = document.querySelector("dialog");
 const modalCloseBtn = document.querySelector("#modal-close-btn");
 
@@ -81,15 +79,17 @@ function renderPage() {
   });
 }
 
-// header.addEventListener("click", (e) => {
-//   if (e.target.id === "sort-AZ") {
-//     sortTitleABCAscending();
-//   }
+sortMenu.addEventListener("change", (e) => {
+  const selectedSortingMethod = e.target.value;
 
-//   if (e.target.id === "sort-ZA") {
-//     sortTitleABCDecending();
-//   }
-// });
+  if (selectedSortingMethod === "ascending") {
+    sortTitleABCAscending();
+  }
+
+  if (selectedSortingMethod === "decending") {
+    sortTitleABCDecending();
+  }
+});
 
 libraryGrid.addEventListener("click", (e) => {
   if (e.target.className === "remove-book-x-btn") {
